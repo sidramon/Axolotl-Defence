@@ -1,0 +1,9 @@
+C:\Users\simon\Desktop\Cegep\Session5\Jeux vidéos et multimédias\Axolotl Defence\.mono\temp\obj\Debug\Axolotl Defense.csproj.AssemblyReference.cache
+C:\Users\simon\Desktop\Cegep\Session5\Jeux vidéos et multimédias\Axolotl Defence\.mono\temp\obj\Debug\Axolotl Defense.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\simon\Desktop\Cegep\Session5\Jeux vidéos et multimédias\Axolotl Defence\.mono\temp\obj\Debug\Axolotl Defense.AssemblyInfoInputs.cache
+C:\Users\simon\Desktop\Cegep\Session5\Jeux vidéos et multimédias\Axolotl Defence\.mono\temp\obj\Debug\Axolotl Defense.AssemblyInfo.cs
+C:\Users\simon\Desktop\Cegep\Session5\Jeux vidéos et multimédias\Axolotl Defence\.mono\temp\obj\Debug\Axolotl Defense.csproj.CoreCompileInputs.cache
+C:\Users\simon\Desktop\Cegep\Session5\Jeux vidéos et multimédias\Axolotl Defence\.mono\temp\bin\Debug\Axolotl Defense.dll
+C:\Users\simon\Desktop\Cegep\Session5\Jeux vidéos et multimédias\Axolotl Defence\.mono\temp\bin\Debug\Axolotl Defense.pdb
+C:\Users\simon\Desktop\Cegep\Session5\Jeux vidéos et multimédias\Axolotl Defence\.mono\temp\obj\Debug\Axolotl Defense.dll
+C:\Users\simon\Desktop\Cegep\Session5\Jeux vidéos et multimédias\Axolotl Defence\.mono\temp\obj\Debug\Axolotl Defense.pdb
