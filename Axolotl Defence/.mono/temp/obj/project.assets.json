@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\simon\\Desktop\\Cegep\\Session5\\Jeux vidéos et multimédias\\Axolotl Defence\\Axolotl Defense.csproj",
+      "projectUniqueName": "C:\\Users\\simon\\Desktop\\Cegep\\Session5\\Jeux vidéos et multimédias\\Axolotl-Defence\\Axolotl Defence\\Axolotl Defense.csproj",
       "projectName": "Axolotl Defense",
-      "projectPath": "C:\\Users\\simon\\Desktop\\Cegep\\Session5\\Jeux vidéos et multimédias\\Axolotl Defence\\Axolotl Defense.csproj",
+      "projectPath": "C:\\Users\\simon\\Desktop\\Cegep\\Session5\\Jeux vidéos et multimédias\\Axolotl-Defence\\Axolotl Defence\\Axolotl Defense.csproj",
       "packagesPath": "C:\\Users\\simon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\simon\\Desktop\\Cegep\\Session5\\Jeux vidéos et multimédias\\Axolotl Defence\\.mono\\temp\\obj\\",
+      "outputPath": "C:\\Users\\simon\\Desktop\\Cegep\\Session5\\Jeux vidéos et multimédias\\Axolotl-Defence\\Axolotl Defence\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\simon\\AppData\\Roaming\\NuGet\\NuGet.Config",

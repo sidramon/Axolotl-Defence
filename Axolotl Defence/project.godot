@@ -11,12 +11,14 @@ config_version=4
 [application]
 
 config/name="Axolotl Defense"
-run/main_scene="res://Map.tscn"
+run/main_scene="res://Menu.tscn"
 
 [display]
 
-window/size/width=1080
+window/size/width=1450
 window/size/height=720
+window/size/resizable=false
+window/vsync/use_vsync=false
 
 [gui]
 
