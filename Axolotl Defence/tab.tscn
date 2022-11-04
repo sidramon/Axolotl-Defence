@@ -91,5 +91,5 @@ position = Vector2( -88, -40 )
 [node name="Copper" parent="." instance=ExtResource( 4 )]
 position = Vector2( -88, 112 )
 
-[node name="Mélanique" parent="." instance=ExtResource( 5 )]
+[node name="Melanique" parent="." instance=ExtResource( 5 )]
 position = Vector2( -88, 264 )

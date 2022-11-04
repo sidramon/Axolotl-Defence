@@ -51,6 +51,7 @@ animations = [ {
 } ]
 
 [node name="Copper" type="Node2D"]
+pause_mode = 2
 __meta__ = {
 "_edit_group_": true
 }
@@ -59,6 +60,6 @@ __meta__ = {
 scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
 animation = "idle"
-frame = 6
+frame = 4
 playing = true
 flip_h = true

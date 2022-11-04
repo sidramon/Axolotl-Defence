@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
 [ext_resource path="res://tests/upheavtt.ttf" type="DynamicFontData" id=2]
@@ -7,25 +7,61 @@
 [ext_resource path="res://Axolotls/Animated/AxanthiqueAnimated.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Axolotls/Animated/CopperAnimated.tscn" type="PackedScene" id=6]
 [ext_resource path="res://tests/seaCave.jpg" type="Texture" id=7]
-
-[sub_resource type="DynamicFont" id=1]
-size = 25
-font_data = ExtResource( 2 )
+[ext_resource path="res://tests/mixkit-little-cute-kiss-2192.wav" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=2]
 size = 80
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 2 )
+
 [node name="Menu" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="SeaCave" type="Sprite" parent="."]
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="SeaCave" type="Sprite" parent="Decorations"]
 position = Vector2( 728, 360 )
 scale = Vector2( 1.04, 0.734694 )
 texture = ExtResource( 7 )
 
-[node name="Start" type="Button" parent="."]
+[node name="Axanthique" parent="Decorations" instance=ExtResource( 5 )]
+position = Vector2( 440, 584 )
+
+[node name="Copper" parent="Decorations" instance=ExtResource( 6 )]
+position = Vector2( 1344, 496 )
+
+[node name="Leucistique" parent="Decorations" instance=ExtResource( 4 )]
+position = Vector2( 584, 280 )
+
+[node name="leucistiqueButton" type="ToolButton" parent="Decorations/Leucistique"]
+modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+margin_left = -8.0
+margin_top = -24.0
+margin_right = 24.0
+margin_bottom = 8.0
+
+[node name="EasterSound" type="AudioStreamPlayer2D" parent="Decorations/Leucistique"]
+stream = ExtResource( 8 )
+
+[node name="Mélanique" parent="Decorations" instance=ExtResource( 3 )]
+position = Vector2( 896, 640 )
+
+[node name="Name" type="Label" parent="Decorations"]
+margin_left = 384.0
+margin_top = 120.0
+margin_right = 1080.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 2 )
+text = "Axolotl Defense"
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Start" type="Button" parent="Buttons"]
 margin_left = 625.0
 margin_top = 304.0
 margin_right = 825.0
@@ -33,42 +69,23 @@ margin_bottom = 374.0
 custom_fonts/font = SubResource( 1 )
 text = "Start"
 
-[node name="Credits" type="Button" parent="."]
+[node name="Settings" type="Button" parent="Buttons"]
 margin_left = 625.0
-margin_top = 408.0
+margin_top = 392.0
 margin_right = 825.0
-margin_bottom = 478.0
-custom_fonts/font = SubResource( 1 )
-text = "Credits"
-
-[node name="Settings" type="Button" parent="."]
-margin_left = 625.0
-margin_top = 512.0
-margin_right = 825.0
-margin_bottom = 582.0
+margin_bottom = 462.0
 custom_fonts/font = SubResource( 1 )
 text = "Settings"
 
-[node name="Axanthique" parent="." instance=ExtResource( 5 )]
-position = Vector2( 440, 584 )
+[node name="Quit" type="Button" parent="Buttons"]
+margin_left = 625.0
+margin_top = 496.0
+margin_right = 825.0
+margin_bottom = 566.0
+custom_fonts/font = SubResource( 1 )
+text = "Quit"
 
-[node name="Copper" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1344, 496 )
-
-[node name="Leucistique" parent="." instance=ExtResource( 4 )]
-position = Vector2( 584, 280 )
-
-[node name="Mélanique" parent="." instance=ExtResource( 3 )]
-position = Vector2( 896, 640 )
-
-[node name="Name" type="Label" parent="."]
-margin_left = 384.0
-margin_top = 120.0
-margin_right = 1080.0
-margin_bottom = 192.0
-custom_fonts/font = SubResource( 2 )
-text = "Axolotl Defence"
-
-[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
-[connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Decorations/Leucistique/leucistiqueButton" to="." method="_on_leucistiqueButton_pressed"]
+[connection signal="pressed" from="Buttons/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Buttons/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_Quit_pressed"]

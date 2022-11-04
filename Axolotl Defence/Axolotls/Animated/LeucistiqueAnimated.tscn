@@ -51,6 +51,7 @@ animations = [ {
 } ]
 
 [node name="Leucistique" type="Node2D"]
+pause_mode = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
