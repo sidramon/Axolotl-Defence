@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://styleseets/Axolotl_Albino_Floating_Idle.png" type="Texture" id=1]
 [ext_resource path="res://Axolotls/Leucistique.gd" type="Script" id=2]
+[ext_resource path="res://tests/mixkit-little-cute-kiss-2192.wav" type="AudioStream" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -62,7 +63,7 @@ script = ExtResource( 2 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
 animation = "idle"
-frame = 3
+frame = 6
 playing = true
 flip_h = true
 
@@ -70,6 +71,9 @@ flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
 shape = SubResource( 10 )
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="body_entered" from="Range" to="." method="_on_Range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_Range_body_exited"]

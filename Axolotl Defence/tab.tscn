@@ -46,7 +46,7 @@ margin_bottom = -144.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Leucistique
-5 $"
+8 $"
 align = 1
 
 [node name="AxanthiqueLabel" type="Label" parent="."]
@@ -57,7 +57,7 @@ margin_bottom = 8.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Axanthique
-8 $"
+9 $"
 align = 1
 
 [node name="CopperLabel" type="Label" parent="."]
@@ -68,7 +68,7 @@ margin_bottom = 160.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Copper
-10 $"
+14 $"
 align = 1
 
 [node name="MélaniqueLabel" type="Label" parent="."]
@@ -79,7 +79,7 @@ margin_bottom = 312.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Mélanique
-12 $"
+22 $"
 align = 1
 
 [node name="Leucistique" parent="." instance=ExtResource( 2 )]

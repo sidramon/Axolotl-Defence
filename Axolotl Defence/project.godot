@@ -13,6 +13,10 @@ config_version=4
 config/name="Axolotl Defense"
 run/main_scene="res://Menu.tscn"
 
+[autoload]
+
+GameData="*res://GameData.gd"
+
 [display]
 
 window/size/width=1450

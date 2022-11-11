@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Axolotls/Animated/LeucistiqueAnimated.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Axolotls/Animated/AxanthiqueAnimated.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Axolotls/Animated/CopperAnimated.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Axolotls/Animated/MélaniqueAnimated.tscn" type="PackedScene" id=4]
+[ext_resource path="res://tests/upheavtt.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Assets/8-Bit-Images-HD.png" type="Texture" id=6]
+[ext_resource path="res://EndTitle.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=2]
+size = 100
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 5 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="Decorations" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="8-Bit-Images-Hd" type="Sprite" parent="Decorations"]
+position = Vector2( 725, 360 )
+scale = Vector2( 0.755208, 0.6 )
+texture = ExtResource( 6 )
+
+[node name="GameOver" type="Label" parent="Decorations"]
+margin_left = 480.0
+margin_top = 136.0
+margin_right = 1005.0
+margin_bottom = 226.0
+custom_fonts/font = SubResource( 2 )
+text = "Game over"
+
+[node name="Mélanique" parent="Decorations" instance=ExtResource( 4 )]
+position = Vector2( 456, 536 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Copper" parent="Decorations" instance=ExtResource( 3 )]
+position = Vector2( 1248, 560 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="Axanthique" parent="Decorations" instance=ExtResource( 2 )]
+position = Vector2( 1176, 704 )
+scale = Vector2( 1.2, 1.2 )
+
+[node name="Leucistique" parent="Decorations" instance=ExtResource( 1 )]
+position = Vector2( 160, 624 )
+
+[node name="RestartButton" type="Button" parent="."]
+margin_left = 608.0
+margin_top = 320.0
+margin_right = 844.0
+margin_bottom = 389.0
+custom_fonts/font = SubResource( 1 )
+text = "Restart"
+
+[node name="BackMenuButton" type="Button" parent="."]
+margin_left = 608.0
+margin_top = 416.0
+margin_right = 844.0
+margin_bottom = 485.0
+custom_fonts/font = SubResource( 1 )
+text = "Back to the menu"
+
+[node name="Quit" type="Button" parent="."]
+margin_left = 608.0
+margin_top = 512.0
+margin_right = 844.0
+margin_bottom = 581.0
+custom_fonts/font = SubResource( 1 )
+text = "Quit"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="BackMenuButton" to="." method="_on_BackMenuButton_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

@@ -1,10 +1,5 @@
 extends Node2D
 
-const leucistiqueCost = 5
-const axanthiqueCost = 8
-const copperCost = 10
-const melaniqueCost = 12
-
 var map_node
 
 var sound = true
@@ -14,7 +9,7 @@ var build_location
 var build_type
 
 var life = 20
-var money = 100
+var money = 8
 var current_round = 0
 var fishes_in_round = 0
 
@@ -32,6 +27,8 @@ func _ready():
 func _process(delta):
 	if build_mode:
 		update_tower_preview()
+	if fishes_in_round == 0:
+		next_round()
 		
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -43,7 +40,6 @@ func _unhandled_input(event):
 		cancel_build_mode()
 		disabledButtons()
 	
-
 func initiate_build_mode(axolotl_type):
 	build_type = axolotl_type
 	build_mode = true
@@ -73,19 +69,11 @@ func verify_and_build():
 	var cost
 	
 	
-	if build_type == "Leucistique" && money - leucistiqueCost >= 0:
-		cost = 5;
-	elif build_type == "Axanthique" && money - axanthiqueCost >= 0:
-		cost = 8;
-	elif build_type == "Copper" && money - copperCost >= 0:
-		cost = 10;
-	elif build_type == "Mélanique" && money - melaniqueCost >= 0:
-		cost = 12;
-	else:
+	if money - GameData.tower_data[build_type].cost < 0:
 		ok = false
 		
 	if build_valid && ok:
-		money -= cost
+		money -= GameData.tower_data[build_type].cost
 		get_node("Labels/Money").text = String(money)
 		var new_tower = load("res://Axolotls/" + build_type + ".tscn").instance()
 		new_tower.position = build_location
@@ -94,10 +82,8 @@ func verify_and_build():
 func _on_SettingsButton_pressed():
 	get_node("InGameSettings").visible = !get_node("InGameSettings").visible;
 
-
 func _on_Quit_pressed():
 	get_tree().change_scene("res://Menu.tscn")
-
 
 func _on_Sound_pressed():
 	if sound:
@@ -119,11 +105,11 @@ func disabledButtons():
 
 func next_round():
 	var round_data = retrieve_wave_data()
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(2.5), "timeout")
 	spawn_fishes(round_data)
 	
 func retrieve_wave_data():
-	var round_data = [["RedFish", 1.0], ["RedFish", 0.6], ["BlueFish", 0.1], ["GreenFish", 0.0]]
+	var round_data = GameData.rounds[current_round]
 	current_round += 1
 	get_node("Labels/Round").text = "Round " + String(current_round)
 	fishes_in_round = round_data.size()
@@ -133,9 +119,22 @@ func spawn_fishes(round_data):
 	for i in round_data:
 		var new_fish = load("res://Fish/" + i[0] + ".tscn").instance()
 		new_fish.connect("damage", self, "on_damage")
+		new_fish.connect("on_death", self, "on_death")
 		map_node.get_node("Path").add_child(new_fish, true)
 		yield(get_tree().create_timer(i[1]), "timeout")
 	
 func on_damage(damage):
+	fishes_in_round -= 1
 	life -= damage
 	get_node("Labels/Life").text = String(life)
+	if life <= 0:
+		get_tree().change_scene("res://EndTitle.tscn")
+
+func on_death(reward):
+	fishes_in_round -= 1
+	money += reward
+	get_node("Labels/Money").text = String(money)
+
+
+func _on_Game_tree_exiting():
+	Engine.set_time_scale(1.0)

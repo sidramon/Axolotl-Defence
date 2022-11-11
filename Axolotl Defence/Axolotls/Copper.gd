@@ -8,4 +8,7 @@ extends "Axolotl.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	damage = 9
+	rof = 2
+	rangeAttack = 300
+

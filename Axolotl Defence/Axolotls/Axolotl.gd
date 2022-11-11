@@ -1,7 +1,12 @@
 extends Node2D
 
+var	damage = 0
+var rof = 0
+var rangeAttack = 0
+
 var enemy_array = []
 var enemy
+var ready = true
 
 func _ready():
 	pass
@@ -10,6 +15,9 @@ func _physics_process(delta):
 	if (enemy_array.size() != 0):
 		select_enemy()
 		turn()
+		if ready:
+			attack()
+			$AttackSound.play()
 	else:
 		enemy = null
 	
@@ -27,6 +35,12 @@ func select_enemy():
 	var enemy_index = enemy_progress_array.find(max_offset)
 	enemy = enemy_array[enemy_index]
 
+func attack():
+	ready = false
+	enemy.on_hit(damage)
+	yield(get_tree().create_timer(rof), "timeout")
+	ready = true
+	
 func _on_Range_body_entered(body):
 	enemy_array.append(body.get_parent())
 
