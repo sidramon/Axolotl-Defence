@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://styleseets/Fish/bluefish.png" type="Texture" id=1]
-[ext_resource path="res://Fish/BlueFish.gd" type="Script" id=2]
+[ext_resource path="res://Fish/Fish.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 9.99997
@@ -9,6 +9,9 @@ height = 16.0
 
 [node name="BlueFish" type="PathFollow2D"]
 script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": "BlueFish"
+}
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 

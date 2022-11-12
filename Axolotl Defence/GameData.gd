@@ -19,11 +19,56 @@ var tower_data = {
 		"range": 300,
 		"cost": 14},
 	
-	"Mélanique": {
+	"Melanique": {
 		"damage": 16,
 		"rof": 2.5,
 		"range": 230,
 		"cost": 22}
+}
+
+var fish_data = {
+	"RedFish": {
+		"speed": 120,
+		"life": 5,
+		"strength": 1,
+		"value": 1
+	},
+	"BlueFish": {
+		"speed": 130,
+		"life": 10,
+		"strength": 2,
+		"value": 2
+	},
+	"GreenFish": {
+		"speed": 145,
+		"life": 15,
+		"strength": 3,
+		"value": 3
+	},
+	"OrangeFish": {
+		"speed": 135,
+		"life": 20,
+		"strength": 4,
+		"value": 4
+	},
+	"PurpleFish": {
+		"speed": 150,
+		"life": 25,
+		"strength": 5,
+		"value": 5
+	},
+	"PufferFish": {
+		"speed": 105,
+		"life": 60,
+		"strength": 18,
+		"value": 10
+	},
+	"BossFish": {
+		"speed": 90,
+		"life": 150,
+		"strength": 20,
+		"value": 20
+	}
 }
 
 var rounds = [
@@ -63,8 +108,18 @@ var rounds = [
 		["PurpleFish", 0.0], ["GreenFish", 0.4], ["PurpleFish", 0.9],
 		["OrangeFish", 0.8], ["OrangeFish", 0.3]
 	],
-	[ #Round 10
+	[ # Round 10
 		["PufferFish", 0.0], ["PurpleFish", 0.9], ["OrangeFish", 0.3],
 		["GreenFish", 0.4], ["GreenFish", 0.7]
+	],
+	[ # Round 11
+		["PufferFish", 0.0], ["PurpleFish", 0.9], ["PurpleFish", 0.0], 
+		["PurpleFish", 0.9], ["OrangeFish", 0.0], ["OrangeFish", 0.3]
+	],
+	[ # Round 12
+
+	],
+	[ # Round 13
+
 	]
 ]

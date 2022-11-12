@@ -4,7 +4,7 @@
 [ext_resource path="res://Axolotls/Animated/LeucistiqueAnimated.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Axolotls/Animated/AxanthiqueAnimated.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Axolotls/Animated/CopperAnimated.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Axolotls/Animated/MélaniqueAnimated.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Axolotls/Animated/MelaniqueAnimated.tscn" type="PackedScene" id=5]
 [ext_resource path="res://tests/230d20f009223dd.png" type="Texture" id=6]
 [ext_resource path="res://tests/upheavtt.ttf" type="DynamicFontData" id=7]
 
@@ -71,14 +71,14 @@ text = "Copper
 14 $"
 align = 1
 
-[node name="MélaniqueLabel" type="Label" parent="."]
+[node name="MelaniqueLabel" type="Label" parent="."]
 margin_left = -32.0
 margin_top = 208.0
 margin_right = 130.0
 margin_bottom = 312.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "Mélanique
+text = "Melanique
 22 $"
 align = 1
 

@@ -1,15 +1,19 @@
 extends Node2D
 
-var	damage = 0
-var rof = 0
-var rangeAttack = 0
+var type
+var	damage
+var rof
+var rangeAttack
 
 var enemy_array = []
 var enemy
-var ready = true
+var ready = false
 
 func _ready():
-	pass
+	type = self.editor_description
+	damage = GameData.tower_data[type].damage
+	rof = GameData.tower_data[type].rof
+	rangeAttack = GameData.tower_data[type].range
 
 func _physics_process(delta):
 	if (enemy_array.size() != 0):
@@ -17,7 +21,8 @@ func _physics_process(delta):
 		turn()
 		if ready:
 			attack()
-			$AttackSound.play()
+			if GameSettings.sound:
+				$AttackSound.play()
 	else:
 		enemy = null
 	

@@ -16,6 +16,7 @@ run/main_scene="res://Menu.tscn"
 [autoload]
 
 GameData="*res://GameData.gd"
+GameSettings="*res://GameSettings.gd"
 
 [display]
 

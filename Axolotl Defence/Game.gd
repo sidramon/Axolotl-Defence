@@ -2,7 +2,6 @@ extends Node2D
 
 var map_node
 
-var sound = true
 var build_mode = false
 var build_valid = false
 var build_location
@@ -18,7 +17,8 @@ func _ready():
 	get_node("Labels/Money").text = String(money)
 	get_node("Labels/Life").text = String(life)
 	
-	$AudioStreamPlayer.play(0)
+	if GameSettings.sound:
+	 $AudioStreamPlayer.play(0)
 	
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
@@ -76,6 +76,7 @@ func verify_and_build():
 		money -= GameData.tower_data[build_type].cost
 		get_node("Labels/Money").text = String(money)
 		var new_tower = load("res://Axolotls/" + build_type + ".tscn").instance()
+		new_tower.ready = true
 		new_tower.position = build_location
 		map_node.add_child(new_tower, true)
 		
@@ -86,13 +87,11 @@ func _on_Quit_pressed():
 	get_tree().change_scene("res://Menu.tscn")
 
 func _on_Sound_pressed():
-	if sound:
-		sound = false
-		get_node("InGameSettings/Sound").modulate = "e18383"
+	if GameSettings.sound:
+		GameSettings.sound = false
 		$AudioStreamPlayer.playing = false
 	else:
-		sound = true
-		get_node("InGameSettings/Sound").modulate = "ffffff"
+		GameSettings.sound = true
 		$AudioStreamPlayer.playing = true
 		
 func disabledButtons():
@@ -100,7 +99,7 @@ func disabledButtons():
 	
 	get_node("Buttons/Axanthique").disabled = !state
 	get_node("Buttons/Leucistique").disabled = !state
-	get_node("Buttons/Mélanique").disabled = !state
+	get_node("Buttons/Melanique").disabled = !state
 	get_node("Buttons/Copper").disabled = !state
 
 func next_round():
@@ -130,9 +129,9 @@ func on_damage(damage):
 	if life <= 0:
 		get_tree().change_scene("res://EndTitle.tscn")
 
-func on_death(reward):
+func on_death(value):
 	fishes_in_round -= 1
-	money += reward
+	money += value
 	get_node("Labels/Money").text = String(money)
 
 

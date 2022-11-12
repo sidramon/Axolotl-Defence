@@ -50,7 +50,7 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[node name="Mélanique" type="Node2D"]
+[node name="Melanique" type="Node2D"]
 pause_mode = 2
 __meta__ = {
 "_edit_group_": true

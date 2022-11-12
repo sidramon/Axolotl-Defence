@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 func set_tower_preview(tower_type, mouse_position):
-	var drag_tower = load("res://Axolotls/" + tower_type + ".tscn").instance()
+	var drag_tower = load("res://Axolotls/Animated/" + tower_type + "Animated.tscn").instance()
 	drag_tower.set_name("DragTower")
 	
 	var control = Control.new()
