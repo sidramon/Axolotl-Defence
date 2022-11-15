@@ -22,7 +22,8 @@ func _on_leucistiqueButton_pressed():
 	easterTimes += 1
 	$Decorations/Leucistique/EasterSound.play()
 	
-	if easterTimes == 10:
+	if easterTimes == 2:
+		GameSettings.debugMode = true
 		get_node("Decorations/Leucistique/AnimatedSprite").modulate = "e18383"
 
 

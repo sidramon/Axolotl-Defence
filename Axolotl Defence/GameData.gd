@@ -1,28 +1,31 @@
 extends Node
 
+var score = 0;
+var lastRound = 0
+
 var tower_data = {
 	"Leucistique": {
 		"damage": 5,
 		"rof": 1.5,
-		"range": 300,
-		"cost": 8},
+		"range": 150,
+		"cost": 10},
 		
 	"Axanthique": {
 		"damage": 4,
 		"rof": 2,
-		"range": 240,
-		"cost": 9},
+		"range": 355,
+		"cost": 12},
 		
 	"Copper": {
 		"damage": 8,
 		"rof": 2,
-		"range": 300,
+		"range": 150,
 		"cost": 14},
 	
 	"Melanique": {
-		"damage": 16,
+		"damage": 24,
 		"rof": 2.5,
-		"range": 230,
+		"range": 125,
 		"cost": 22}
 }
 
@@ -48,26 +51,32 @@ var fish_data = {
 	"OrangeFish": {
 		"speed": 135,
 		"life": 20,
-		"strength": 4,
-		"value": 4
+		"strength": 3,
+		"value": 3
 	},
 	"PurpleFish": {
 		"speed": 150,
-		"life": 25,
+		"life": 35,
 		"strength": 5,
-		"value": 5
+		"value": 4
 	},
 	"PufferFish": {
 		"speed": 105,
-		"life": 60,
+		"life": 100,
+		"strength": 15,
+		"value": 5
+	},
+	"GrayFish": {
+		"speed": 175,
+		"life": 150,
 		"strength": 18,
-		"value": 10
+		"value": 6
 	},
 	"BossFish": {
 		"speed": 90,
-		"life": 150,
+		"life": 750,
 		"strength": 20,
-		"value": 20
+		"value": 10
 	}
 }
 
@@ -117,9 +126,41 @@ var rounds = [
 		["PurpleFish", 0.9], ["OrangeFish", 0.0], ["OrangeFish", 0.3]
 	],
 	[ # Round 12
-
+		["PufferFish", 0.5], ["PurpleFish", 0.9], ["PurpleFish", 0.1],
+		["PurpleFish", 0.8], ["PurpleFish", 0.2], ["PurpleFish", 0.7],
+		["PurpleFish", 0.3]
 	],
 	[ # Round 13
-
+		["PufferFish", 0.5], ["PurpleFish", 0.8], ["PufferFish", 0.8],
+		["PurpleFish", 0.8], ["PurpleFish", 0.2], ["PufferFish", 0.5],
+		["OrangeFish", 0.0]
+	],
+	[ # Round 14
+		["PurpleFish", 0.8], ["PurpleFish", 0.2],["PurpleFish", 0.1], 
+		["PurpleFish", 0.9], ["PurpleFish", 0.4], ["PurpleFish", 0.7],
+		["PufferFish", 0.5], ["PufferFish", 0.8]
+	],
+	[ # Round 15
+		["PufferFish", 0.1], ["PufferFish", 0.9], ["PufferFish", 0.2],
+		["PufferFish", 0.5]
+	],
+	[ # Round 16
+		["GrayFish", 0.0], ["PurpleFish", 0.2], ["PurpleFish", 0.9]
+	],
+	[ # Round 17
+		["GrayFish", 0.8], ["PufferFish", 0.1], ["PufferFish", 0.9],
+		["PurpleFish", 0.2]
+	],
+	[ # Round 18
+		["GrayFish", 0.0], ["GrayFish", 0.8], ["GrayFish", 0.8],
+		["PufferFish", 0.1]
+	],
+	[ # Round 19
+		["GrayFish", 0.0], ["PufferFish", 0.1], ["PurpleFish", 0.2],
+		["PurpleFish", 0.9], ["PurpleFish", 0.3],["PurpleFish", 0.8],
+		["GrayFish", 0.8]
+	],
+	[ # Round 20
+		["BossFish", 0.0], ["RedFish", 0.9]
 	]
 ]

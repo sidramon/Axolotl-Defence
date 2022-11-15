@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Axolotls/Animated/LeucistiqueAnimated.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Axolotls/Animated/AxanthiqueAnimated.tscn" type="PackedScene" id=2]
@@ -12,6 +12,10 @@
 size = 100
 font_data = ExtResource( 5 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 5 )
+
 [sub_resource type="DynamicFont" id=1]
 size = 25
 font_data = ExtResource( 5 )
@@ -22,8 +26,8 @@ anchor_bottom = 1.0
 script = ExtResource( 7 )
 
 [node name="Decorations" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1448.0
+margin_bottom = 720.0
 
 [node name="8-Bit-Images-Hd" type="Sprite" parent="Decorations"]
 position = Vector2( 725, 360 )
@@ -31,12 +35,13 @@ scale = Vector2( 0.755208, 0.6 )
 texture = ExtResource( 6 )
 
 [node name="GameOver" type="Label" parent="Decorations"]
-margin_left = 480.0
-margin_top = 136.0
-margin_right = 1005.0
-margin_bottom = 226.0
+margin_top = 88.0
+margin_right = 1450.0
+margin_bottom = 178.0
 custom_fonts/font = SubResource( 2 )
 text = "Game over"
+align = 1
+autowrap = true
 
 [node name="Melanique" parent="Decorations" instance=ExtResource( 4 )]
 position = Vector2( 456, 536 )
@@ -52,6 +57,22 @@ scale = Vector2( 1.2, 1.2 )
 
 [node name="Leucistique" parent="Decorations" instance=ExtResource( 1 )]
 position = Vector2( 160, 624 )
+
+[node name="Score" type="Label" parent="."]
+margin_left = 776.0
+margin_top = 224.0
+margin_right = 1448.0
+margin_bottom = 270.0
+custom_fonts/font = SubResource( 3 )
+text = "Score: 0"
+
+[node name="Round" type="Label" parent="."]
+margin_top = 224.0
+margin_right = 669.0
+margin_bottom = 270.0
+custom_fonts/font = SubResource( 3 )
+text = "Round: 0"
+align = 2
 
 [node name="RestartButton" type="Button" parent="."]
 margin_left = 608.0

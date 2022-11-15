@@ -8,13 +8,12 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+	if GameData.lastRound == 21:
+		get_node("Decorations/GameOver").text = "You won!"
+		GameData.lastRound = 20
+		
+	get_node("Round").text = "Round: " + String(GameData.lastRound)
+	get_node("Score").text = "Score: " + String(GameData.score)
 
 func _on_BackMenuButton_pressed():
 	get_tree().change_scene("res://Menu.tscn")

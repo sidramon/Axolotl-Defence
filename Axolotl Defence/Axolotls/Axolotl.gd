@@ -14,6 +14,7 @@ func _ready():
 	damage = GameData.tower_data[type].damage
 	rof = GameData.tower_data[type].rof
 	rangeAttack = GameData.tower_data[type].range
+	self.get_node("Range/CollisionShape2D").shape.set_radius(rangeAttack)
 
 func _physics_process(delta):
 	if (enemy_array.size() != 0):
