@@ -1,21 +1,68 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tests/upheavtt.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Settings.gd" type="Script" id=2]
+[ext_resource path="res://tests/230d20f009223dd.png" type="Texture" id=3]
+[ext_resource path="res://Assets/audioOn.png" type="Texture" id=4]
+[ext_resource path="res://Assets/audioOff.png" type="Texture" id=5]
+[ext_resource path="res://Assets/return.png" type="Texture" id=6]
 
-[sub_resource type="DynamicFont" id=1]
-size = 25
+[sub_resource type="DynamicFont" id=2]
+size = 50
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=3]
 
 [node name="Settings" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Back" type="Button" parent="."]
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 240.0
-margin_bottom = 110.0
-custom_fonts/font = SubResource( 1 )
-text = "Back"
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 760, 360 )
+scale = Vector2( 2.41231, 3.392 )
+texture = ExtResource( 3 )
+
+[node name="Back" type="TextureButton" parent="."]
+margin_left = 88.0
+margin_top = 120.0
+margin_right = 192.0
+margin_bottom = 220.0
+texture_normal = ExtResource( 6 )
+
+[node name="Sound" type="Label" parent="."]
+margin_left = 520.0
+margin_top = 128.0
+margin_right = 670.0
+margin_bottom = 174.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Sound"
+
+[node name="SoundSettings" type="TextureButton" parent="."]
+margin_left = 704.0
+margin_top = 104.0
+margin_right = 804.0
+margin_bottom = 204.0
+toggle_mode = true
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+
+[node name="DebugMode" type="Label" parent="."]
+margin_left = 520.0
+margin_top = 288.0
+margin_right = 813.0
+margin_bottom = 334.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Debug Mode"
+
+[node name="DebugButton" type="CheckButton" parent="."]
+margin_left = 832.0
+margin_top = 296.0
+margin_right = 908.0
+margin_bottom = 336.0
+theme = SubResource( 3 )
 
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="SoundSettings" to="." method="_on_SoundSettings_pressed"]
+[connection signal="pressed" from="DebugButton" to="." method="_on_DebugButton_pressed"]

@@ -10,6 +10,7 @@ var enemy
 var ready = false
 
 func _ready():
+	self.add_to_group("pausable")
 	type = self.editor_description
 	damage = GameData.tower_data[type].damage
 	rof = GameData.tower_data[type].rof
@@ -20,7 +21,7 @@ func _physics_process(delta):
 	if (enemy_array.size() != 0):
 		select_enemy()
 		turn()
-		if ready:
+		if ready && !GameSettings.onPause:
 			attack()
 			if GameSettings.sound:
 				$AttackSound.play()

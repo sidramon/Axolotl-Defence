@@ -14,6 +14,7 @@ var strength = 0
 var value = 0
 
 func _ready():
+	self.add_to_group("pausable")
 	sprite = get_node("KinematicBody2D/Sprite")
 	timer = get_node("Timer")
 	timer.set_wait_time(0.2)
@@ -29,8 +30,9 @@ func _physics_process(delta):
 	if unit_offset > 0.99:
 		emit_signal("damage", strength)
 		queue_free()
-		
-	move(delta)
+	
+	if !GameSettings.onPause:
+		move(delta)
 	
 func move(delta):
 	set_offset(get_offset() + speed * delta)

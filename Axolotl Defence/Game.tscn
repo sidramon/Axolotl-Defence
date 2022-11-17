@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://UI.gd" type="Script" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://Assets/redsquare.png" type="Texture" id=15]
 [ext_resource path="res://InGameSettings.gd" type="Script" id=16]
 [ext_resource path="res://Assets/heart-icon.png" type="Texture" id=17]
+[ext_resource path="res://Assets/plus.png" type="Texture" id=18]
+[ext_resource path="res://Assets/minus.png" type="Texture" id=19]
 
 [sub_resource type="TileSet" id=5]
 0/name = "redsquare.png 0"
@@ -48,6 +50,10 @@ font_data = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 25
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
 font_data = ExtResource( 10 )
 
 [node name="Game" type="Node2D"]
@@ -104,9 +110,9 @@ custom_fonts/font = SubResource( 2 )
 text = "Round 1"
 
 [node name="Life" type="Label" parent="Labels"]
-margin_left = 1281.0
+margin_left = 1288.0
 margin_top = 6.0
-margin_right = 1350.0
+margin_right = 1357.0
 margin_bottom = 58.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -114,21 +120,21 @@ text = "0"
 
 [node name="Money" type="Label" parent="Labels"]
 pause_mode = 2
-margin_left = 1144.0
-margin_top = 4.0
-margin_right = 1213.0
-margin_bottom = 56.0
+margin_left = 1136.0
+margin_top = 6.0
+margin_right = 1205.0
+margin_bottom = 58.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "5"
 
 [node name="Heart" type="Sprite" parent="Labels"]
-position = Vector2( 1248, 32 )
+position = Vector2( 1256, 32 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 17 )
 
 [node name="DollarLogo" type="Sprite" parent="Labels"]
-position = Vector2( 1120, 32 )
+position = Vector2( 1113, 32 )
 texture = ExtResource( 9 )
 
 [node name="Buttons" type="Node2D" parent="."]
@@ -136,9 +142,8 @@ pause_mode = 2
 
 [node name="SettingsButton" type="TextureButton" parent="Buttons"]
 pause_mode = 2
-margin_left = 1336.0
-margin_top = -8.0
-margin_right = 1448.0
+margin_left = 1348.0
+margin_right = 1451.0
 margin_bottom = 100.0
 texture_normal = ExtResource( 13 )
 
@@ -260,6 +265,41 @@ toggle_mode = true
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 4 )
 
+[node name="RoundSelector" type="HBoxContainer" parent="InGameSettings"]
+visible = false
+margin_left = 288.0
+margin_top = 208.0
+margin_right = 711.0
+margin_bottom = 312.0
+
+[node name="RoundSelectLabel" type="Label" parent="InGameSettings/RoundSelector"]
+margin_top = 41.0
+margin_right = 215.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Round selection :"
+align = 1
+valign = 1
+
+[node name="previousRoundButton" type="TextureButton" parent="InGameSettings/RoundSelector"]
+margin_left = 219.0
+margin_right = 319.0
+margin_bottom = 104.0
+texture_normal = ExtResource( 19 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="NextRoundButton" type="TextureButton" parent="InGameSettings/RoundSelector"]
+margin_left = 323.0
+margin_right = 423.0
+margin_bottom = 104.0
+texture_normal = ExtResource( 18 )
+__meta__ = {
+"_edit_group_": true
+}
+
 [connection signal="tree_exiting" from="." to="." method="_on_Game_tree_exiting"]
 [connection signal="pressed" from="Buttons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="UI/GameControls/PausePlayButton" to="." method="_on_PausePlayButton_pressed"]
@@ -267,4 +307,6 @@ texture_pressed = ExtResource( 4 )
 [connection signal="pressed" from="InGameSettings/Quit" to="InGameSettings" method="_on_Quit_pressed"]
 [connection signal="pressed" from="InGameSettings/Restart" to="InGameSettings" method="_on_Restart_pressed"]
 [connection signal="pressed" from="InGameSettings/Auto_death" to="." method="_on_Auto_death_pressed"]
-[connection signal="pressed" from="InGameSettings/Sound" to="InGameSettings" method="_on_Sound_pressed"]
+[connection signal="pressed" from="InGameSettings/Sound" to="." method="_on_Sound_pressed"]
+[connection signal="pressed" from="InGameSettings/RoundSelector/previousRoundButton" to="." method="_on_previousRoundButton_pressed"]
+[connection signal="pressed" from="InGameSettings/RoundSelector/NextRoundButton" to="." method="_on_NextRoundButton_pressed"]

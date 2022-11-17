@@ -16,14 +16,15 @@ var fishes_in_round = 0
 func _ready():
 	map_node = get_node("Map")
 	
-	if GameSettings.sound:
-		$AudioStreamPlayer.play(0)
+	$AudioStreamPlayer.play(0)
+	if !GameSettings.sound:
+		$AudioStreamPlayer.playing = false
 	
 	if GameSettings.debugMode:
 		map_node.get_node("TowerExclusion").visible = true
 		get_node("InGameSettings/Auto_death").visible = true
+		get_node("InGameSettings/RoundSelector").visible = true
 		money = 999
-		current_round = 19
 	
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed", self, "initiate_build_mode", [i.get_name()])
@@ -87,13 +88,13 @@ func verify_and_build():
 		new_tower.ready = true
 		new_tower.position = build_location
 		map_node.get_node("TowerExclusion").set_cellv(build_tile, 0)
-		if GameSettings.debugMode:
-			var range_texture = Sprite.new()
-			var scaling = GameData.tower_data[build_type].range / 300.0
-			range_texture.scale = Vector2(scaling, scaling)
-			var texture = load("res://Assets/range_overlay.png")
-			range_texture.texture = texture
-			new_tower.add_child(range_texture, true)
+		#if GameSettings.debugMode:
+			#var range_texture = Sprite.new()
+			#var scaling = GameData.tower_data[build_type].range / 300.0
+			#range_texture.scale = Vector2(scaling, scaling)
+			#var texture = load("res://Assets/range_overlay.png")
+			#range_texture.texture = texture
+			#new_tower.add_child(range_texture, true)
 		map_node.add_child(new_tower, true)
 func _on_SettingsButton_pressed():
 	get_node("InGameSettings").visible = !get_node("InGameSettings").visible;
@@ -108,7 +109,7 @@ func disabledButtons():
 
 func next_round():
 	var round_data = retrieve_wave_data()
-	yield(get_tree().create_timer(2.5), "timeout")
+	yield(get_tree().create_timer(2.0), "timeout")
 	spawn_fishes(round_data)
 	
 func retrieve_wave_data():
@@ -158,6 +159,32 @@ func _on_Game_tree_exiting():
 func _on_Auto_death_pressed():
 	get_tree().change_scene("res://EndTitle.tscn")
 
+func _on_Sound_pressed():
+	if GameSettings.sound:
+		GameSettings.sound = false
+		$AudioStreamPlayer.stop()
+	else:
+		GameSettings.sound = true
+		$AudioStreamPlayer.play(0)
 
 func _on_PausePlayButton_pressed():
-	next_round()
+	if fishes_in_round == 0:
+		next_round()
+	elif get_node("UI/GameControls/PausePlayButton").pressed:
+		GameSettings.onPause = true
+	else:
+		GameSettings.onPause = false
+
+
+func _on_previousRoundButton_pressed():
+	if current_round > 0:
+		current_round -= 1
+		get_node("Labels/Round").text = "Round " + String(current_round)
+	
+
+
+func _on_NextRoundButton_pressed():
+	if current_round < 19:
+		current_round += 1
+		get_node("Labels/Round").text = "Round " + String(current_round)
+	

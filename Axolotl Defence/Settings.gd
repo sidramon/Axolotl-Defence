@@ -8,13 +8,21 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	if !GameSettings.sound:
+		get_node("SoundSettings").pressed = true
+	if GameSettings.debugMode:
+		get_node("DebugButton").pressed = true
 
 
 func _on_Back_pressed():
 	get_tree().change_scene("res://Menu.tscn")
+
+
+
+
+func _on_SoundSettings_pressed():
+	GameSettings.sound = !GameSettings.sound
+
+
+func _on_DebugButton_pressed():
+	GameSettings.debugMode = $DebugButton.pressed
