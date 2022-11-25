@@ -37,10 +37,23 @@ func _physics_process(delta):
 func move(delta):
 	set_offset(get_offset() + speed * delta)
 	 
-func on_hit(damage):
+func on_hit(damage, type):
 	timer.start()
 	shader.set_shader_param("flash_modifier", 1)
+	
+	if self.type == "PufferFish" && type == "Axanthique":
+		damage *= 1.15
+	if self.type == "GrayFish" && (type == "Leucistique" || type == "Axanthique"):
+		damage *= 0.7
+	if self.type == "GrayFish" && type == "Copper":
+		damage *= 1.25
+	if self.type == "BossFish" && type == "Copper":
+		damage *= 0.5
+	if self.type == "BossFish" && type == "Leucistique":
+		damage *= 0.85
+	
 	life -= damage
+	
 	if life <= 0:
 		on_destroy()
 		

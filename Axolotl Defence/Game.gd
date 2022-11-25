@@ -87,6 +87,7 @@ func verify_and_build():
 		var new_tower = load("res://Axolotls/" + build_type + ".tscn").instance()
 		new_tower.ready = true
 		new_tower.position = build_location
+		new_tower.connect("onShoot", self, "on_shoot")
 		map_node.get_node("TowerExclusion").set_cellv(build_tile, 0)
 		#if GameSettings.debugMode:
 			#var range_texture = Sprite.new()
@@ -133,6 +134,9 @@ func on_damage(damage):
 	get_node("Labels/Life").text = String(life)
 	if life <= 0:
 		get_tree().change_scene("res://EndTitle.tscn")
+
+func on_shoot(projectile):
+	get_node("Map/Projectiles").add_child(projectile)
 
 func on_death(value):
 	fishes_in_round = get_node("Map/Path").get_child_count()-1

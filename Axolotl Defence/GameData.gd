@@ -8,25 +8,29 @@ var tower_data = {
 		"damage": 5,
 		"rof": 1.5,
 		"range": 150,
-		"cost": 10},
+		"cost": 10,
+		"color": "FFFFFF"},
 		
 	"Axanthique": {
 		"damage": 4,
 		"rof": 2,
 		"range": 355,
-		"cost": 12},
+		"cost": 12,
+		"color": "4aabd1"},
 		
 	"Copper": {
 		"damage": 8,
-		"rof": 2,
+		"rof": 1.6,
 		"range": 150,
-		"cost": 14},
+		"cost": 14,
+		"color": "481b1b"},
 	
 	"Melanique": {
 		"damage": 24,
 		"rof": 2.5,
 		"range": 125,
-		"cost": 22}
+		"cost": 22,
+		"color": "000000"}
 }
 
 var fish_data = {

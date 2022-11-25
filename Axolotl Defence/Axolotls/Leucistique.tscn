@@ -66,14 +66,18 @@ __meta__ = {
 scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
 animation = "idle"
-frame = 4
+frame = 6
 playing = true
 flip_h = true
 
 [node name="Range" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+position = Vector2( 4, 3 )
 shape = SubResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )

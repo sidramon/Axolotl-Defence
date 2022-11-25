@@ -11,7 +11,11 @@ func _ready():
 	if GameData.lastRound == 21:
 		get_node("Decorations/GameOver").text = "You won!"
 		GameData.lastRound = 20
-		
+		if GameSettings.sound:
+			$winSound.play()
+	else:
+		if GameSettings.sound:
+			$defeatSound.play()
 	get_node("Round").text = "Round: " + String(GameData.lastRound)
 	get_node("Score").text = "Score: " + String(GameData.score)
 

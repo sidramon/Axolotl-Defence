@@ -94,6 +94,8 @@ pause_mode = 2
 position = Vector2( 2, 0 )
 curve = SubResource( 4 )
 
+[node name="Projectiles" type="Node2D" parent="Map"]
+
 [node name="Tab" parent="." instance=ExtResource( 3 )]
 pause_mode = 2
 position = Vector2( 1270, 360 )

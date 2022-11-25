@@ -1,15 +1,20 @@
 extends Node2D
 
+signal onShoot(projectile)
+
 var type
 var	damage
 var rof
 var rangeAttack
-
+var test = Vector2()
 var enemy_array = []
 var enemy
 var ready = false
 
+var projectilePath = preload("res://Projectile.tscn")
+
 func _ready():
+	test = position
 	self.add_to_group("pausable")
 	type = self.editor_description
 	damage = GameData.tower_data[type].damage
@@ -43,8 +48,15 @@ func select_enemy():
 	enemy = enemy_array[enemy_index]
 
 func attack():
+	var attack = projectilePath.instance()
+	var t = position.y
+	attack.position = position
+	attack.velocity = enemy.position - position
+	attack.endLife = enemy.position
+	attack.color = GameData.tower_data[type].color
+	emit_signal("onShoot", attack)
 	ready = false
-	enemy.on_hit(damage)
+	enemy.on_hit(damage, type)
 	yield(get_tree().create_timer(rof), "timeout")
 	ready = true
 	

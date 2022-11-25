@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Axolotls/Animated/LeucistiqueAnimated.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Axolotls/Animated/AxanthiqueAnimated.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://tests/upheavtt.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Assets/8-Bit-Images-HD.png" type="Texture" id=6]
 [ext_resource path="res://EndTitle.gd" type="Script" id=7]
+[ext_resource path="res://Sounds/D2ZZHGM-game-over.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/gewonnen2-7000.mp3" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=2]
 size = 100
@@ -97,6 +99,12 @@ margin_right = 844.0
 margin_bottom = 581.0
 custom_fonts/font = SubResource( 1 )
 text = "Quit"
+
+[node name="winSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="defeatSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="BackMenuButton" to="." method="_on_BackMenuButton_pressed"]
