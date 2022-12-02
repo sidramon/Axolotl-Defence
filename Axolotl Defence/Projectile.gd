@@ -9,5 +9,5 @@ func _physics_process(delta):
 	if color != "FFFFFF":
 		self.modulate = Color(color)
 	move_and_collide(velocity.normalized() * delta * speed)
-	if position == endLife:
+	if position.x >= 1450 || position.y >= 720 || position.x <= 0 || position.y <= 0:
 		self.queue_free()
